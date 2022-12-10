@@ -33,6 +33,12 @@ cd bin
 ./main_for_tom
 ```
 
+The program settings such as the connection file to use, the register names to read can be updated using the CLI interface. To get the available options, one can execute the `-h` flag (short for `--help`):
+
+```bash
+./main_for_tom -h
+```
+
 ### Getting the Stack Trace
 
 By default, only a `Segmentation fault` message will be displayed. To get more information, user needs to specify that the core should be dumped when a seg-fault happens, and the core file can be examined for the stack trace.
