@@ -3,12 +3,20 @@
 
 #include "uhal/uhal.hpp"
 
+// Default XML connection file to be used
+#define DEFAULT_CONNECTION_FILE "file://opt/address_table/connections.xml"
+
+// Default register names to read
+#define DEFUALT_LOCAL_REGISTER  "PL_MEM.ARM.CPU_LOAD"
+#define DEFAULT_REMOTE_REGISTER "CM_V_INFO.GIT_HASH_1" 
+#define DEFAULT_MMAP_REGISTER   "info.magic"
+
 int main(int argc, char* argv[])
 {
   // Connection file to use: Path is relative to the bin/main executable
   // This connection file has two set of hardware interfaces:
   // 1. UIOuHAL interface, 2. MemMap interface
-  std::string connectionFile("file://../address_table/connections_for_tom.xml");
+  std::string connectionFile(DEFAULT_CONNECTION_FILE);
 
   std::cout << "Using connection file: " << connectionFile << std::endl;
 
@@ -32,7 +40,7 @@ int main(int argc, char* argv[])
   std::cout << "Got the HW interface for MemMap" << std::endl;
 
   // Now, read the registers with both interfaces
-  std::string registerName("PL_MEM.ARM.CPU_LOAD");
+  std::string registerName(DEFUALT_LOCAL_REGISTER);
   std::cout << "Trying to read register: " << registerName << " with UIOuHAL interface" << std::endl;
   uhal::ValWord<uint32_t> ret_uio;
 
@@ -43,7 +51,7 @@ int main(int argc, char* argv[])
   std::cout << "Value: 0x" << std::hex << ret_uio.value() << std::endl; 
   
   // 'Remote' register using uIOuHAL
-  std::string registerNameRemoteUIO("CM_V_INFO.GIT_HASH_1");
+  std::string registerNameRemoteUIO(DEFAULT_REMOTE_REGISTER);
   std::cout << "Trying to read register: " << registerNameRemoteUIO << " with UIOuHAL interface" << std::endl;
   try {
     ret_uio = hw_uio->getNode(registerNameRemoteUIO).read();
@@ -54,8 +62,7 @@ int main(int argc, char* argv[])
     std::cout << "Exception caught (as expected): " << e.what() << std::endl;
   }
 
-
-  std::string registerNameMMap("info.magic");
+  std::string registerNameMMap(DEFAULT_MMAP_REGISTER);
   std::cout << "Trying to read register: " << registerNameMMap << " with MemMap interface" << std::endl;
   uhal::ValWord<uint32_t> ret_mmap;
 
