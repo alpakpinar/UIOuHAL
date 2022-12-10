@@ -29,11 +29,11 @@ int main(int argc, char* argv[])
    */
   po::options_description cli_options("CLI options");
   cli_options.add_options()
-    ("help",  "Help screen")
-    ("cfile"      , po::value<string>(), "XML connection file to use")
-    ("lRegUIO"    , po::value<string>(), "Name of the local UIO register")
-    ("rRegUIO"    , po::value<string>(), "Name of the remote UIO register")
-    ("regMmap"    , po::value<string>(), "Name of the MemMap register")
+    ("help,h",  "Help screen")
+    ("cfile,c"      , po::value<string>(), "XML connection file to use")
+    ("lRegUIO,l"    , po::value<string>(), "Name of the local UIO register")
+    ("rRegUIO,r"    , po::value<string>(), "Name of the remote UIO register")
+    ("regMmap,m"    , po::value<string>(), "Name of the MemMap register")
   ;
 
   po::variables_map vmap;        
