@@ -69,6 +69,7 @@ LIBRARIES =     \
                 -lpthread \
                 \
                 -lboost_filesystem \
+                -lboost_program_options \
                 -lboost_regex \
                 -lboost_system \
                 -lboost_thread \
