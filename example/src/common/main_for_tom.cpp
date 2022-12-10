@@ -4,7 +4,7 @@
 #include "uhal/uhal.hpp"
 
 // Default XML connection file to be used
-#define DEFAULT_CONNECTION_FILE "file://opt/address_table/connections.xml"
+#define DEFAULT_CONNECTION_FILE "file://../address_table/connections_for_tom.xml"
 
 // Default register names to read
 #define DEFUALT_LOCAL_REGISTER  "PL_MEM.ARM.CPU_LOAD"
