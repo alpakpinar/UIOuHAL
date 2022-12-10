@@ -50,13 +50,13 @@ int main(int argc, char* argv[])
   if (vmap.count("cfile")) {
     connectionFile = vmap["cfile"].as<string>();
   }
-  if (vmap.count["lRegUIO"]) {
+  if (vmap.count("lRegUIO")) {
     localRegister = vmap["lRegUIO"].as<string>();
   }
-  if (vmap.count["rRegUIO"]) {
+  if (vmap.count("rRegUIO")) {
     remoteRegister = vmap["rRegUIO"].as<string>();
   }
-  if (vmap.count["regMmap"]) {
+  if (vmap.count("regMmap")) {
     mmapRegister = vmap["regMmap"].as<string>();
   }
 
